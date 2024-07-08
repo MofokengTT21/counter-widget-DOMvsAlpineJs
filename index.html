@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM vs withAplineJs</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
+</head>
+
+<body>
+    <h1>Counter Widget</h1>
+    <p>Plain DOM vs manipulated with AlpineJs</p>
+    <div>
+        <div class="card">
+            <!-- DOM counter widget -->
+            <div class="box">
+                <h1>DOM</h1>
+                <div class="counter">0</div>
+                <div>
+                    <button class="decrement">-</button>
+                    <button class="increment">+</button>
+                </div>
+                <br>
+                <span onclick="domButton()"><a href="#show2"><i>Show Code</i></a></span>
+            </div>
+            <script src="index.js" defer></script>
+
+            <!-- AlplineJs counter widget -->
+            <div x-data="{ count: 0 }">
+                <h1>with AlpineJs</h1>
+                <div class="counter" x-text="count"></div>
+                <div>
+                    <button @click="count--">-</button>
+                    <button @click="count++">+</button>
+                </div>
+                <br>
+                <span onclick="alpineButton() "><a href="#show2"><i>Show Code</i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div x-data="{ open: false }">
+        <div @click="open = !open" id="show"></div>
+        <div x-show="open" class="content" style="text-align: start;">
+
+            <!-- HTML generated using hilite.me -->
+            <h2>Using the plain DOM</h2>
+            <div
+                style="background: #ffffff; overflow:auto;width:auto;border:solid rgb(247, 23, 179);border-width:.1em .1em .1em .8em;padding:.2em .6em; border-radius: 12px;">
+                <h5>HTML</h5>
+                <pre style="margin: 0; line-height: 125%"><span style="color: #1e90ff; font-weight: bold">&lt;div</span> <span style="color: #1e90ff">class=</span><span style="color: #aa5500">&quot;counter&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;</span>0<span style="color: #1e90ff; font-weight: bold">&lt;/div&gt;</span>
+                <span style="color: #1e90ff; font-weight: bold">&lt;div&gt;</span>
+                <span style="color: #1e90ff; font-weight: bold">&lt;button</span> <span style="color: #1e90ff">class=</span><span style="color: #aa5500">&quot;decrement&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;</span>-<span style="color: #1e90ff; font-weight: bold">&lt;/button&gt;</span>
+                <span style="color: #1e90ff; font-weight: bold">&lt;button</span> <span style="color: #1e90ff">class=</span><span style="color: #aa5500">&quot;increment&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;</span>+<span style="color: #1e90ff; font-weight: bold">&lt;/button&gt;</span>     
+                <span style="color: #1e90ff; font-weight: bold">&lt;/div&gt;</span>
+                </pre>
+            </div>
+            <!-- HTML generated using hilite.me -->
+            <div
+                style="background: #ffffff; overflow:auto;width:auto;border:solid rgb(247, 23, 179);border-width:.1em .1em .1em .8em;padding:.2em .6em; border-radius: 12px;">
+                <h5>plus JavaScript</h5>
+                <pre style="margin: 0; line-height: 125%"><span style="color: #0000aa">let</span> counter = <span style="color: #009999">0</span>;
+                <span style="color: #0000aa">const</span> counterElem = <span style="color: #00aaaa">document</span>.querySelector(<span style="color: #aa5500">&#39;.counter&#39;</span>);
+                <span style="color: #0000aa">const</span> incrementBtn =  <span style="color: #00aaaa">document</span>.querySelector(<span style="color: #aa5500">&#39;.increment&#39;</span>);
+                <span style="color: #0000aa">const</span> decrementBtn = <span style="color: #00aaaa">document</span>.querySelector(<span style="color: #aa5500">&#39;.decrement&#39;</span>);
+
+                incrementBtn.addEventListener(<span style="color: #aa5500">&#39;click&#39;</span>, <span style="color: #0000aa">function</span>() {
+                    counter++;
+                    counterElem.innerText = counter;
+                });
+
+                decrementBtn.addEventListener(<span style="color: #aa5500">&#39;click&#39;</span>, <span style="color: #0000aa">function</span>() {
+                    counter--;
+                    counterElem.innerText = counter;
+                });
+                </pre>
+            </div>
+        </div>
+    </div>
+
+    <div x-data="{ open: false }">
+        <div @click="open = !open" id="show2"></div>
+        <div x-show="open" class="content" style="text-align: start;">
+            <!-- HTML generated using hilite.me -->
+            <h2>Munipulating DOM with AlpineJs</h2>
+            <div
+                style="background: #ffffff; overflow:auto;width:auto;border:solid rgb(19, 183, 224);border-width:.1em .1em .1em .8em;padding:.2em .6em; border-radius: 12px;">
+                <h5>only one HTML file</h5>
+                <pre style="margin: 0; line-height: 125%"><span style="color: #1e90ff; font-weight: bold">&lt;div</span> <span style="color: #1e90ff">x-data=</span><span style="color: #aa5500">&quot;{ count : 0 } &quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;</span>
+                <span style="color: #1e90ff; font-weight: bold">&lt;div</span> <span style="color: #1e90ff">class=</span><span style="color: #aa5500">&quot;counter&quot;</span> <span style="color: #1e90ff">x-text=</span><span style="color: #aa5500">&quot;count&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;&lt;/div&gt;</span>
+                <span style="color: #1e90ff; font-weight: bold">&lt;div&gt;</span>
+                <span style="color: #1e90ff; font-weight: bold">&lt;button</span> <span style="color: #FF0000;">@</span><span style="color: #1e90ff">click=</span><span style="color: #aa5500">&quot;count++&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;</span>+<span style="color: #1e90ff; font-weight: bold">&lt;/button&gt;</span>
+                <span style="color: #1e90ff; font-weight: bold">&lt;button</span> <span style="color: #FF0000;">@</span><span style="color: #1e90ff">click=</span><span style="color: #aa5500">&quot;count--&quot;</span><span style="color: #1e90ff; font-weight: bold">&gt;</span>-<span style="color: #1e90ff; font-weight: bold">&lt;/button&gt;</span>
+                <span style="color: #1e90ff; font-weight: bold">&lt;/div&gt;</span>
+                <span style="color: #1e90ff; font-weight: bold">&lt;/div&gt;</span>
+                </pre>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function domButton() {
+            document.getElementById('show').click();
+        };
+        function alpineButton() {
+            document.getElementById('show2').click();
+        }
+    </script>
+
+</body>
+
+</html>
