@@ -1,17 +1,25 @@
-// a plain DOM example of creating a  counter widget using the DOM
+document.addEventListener('DOMContentLoaded', function() {
+    const domCounter = document.getElementById('dom-counter');
+    const decrementButton = document.querySelector('.decrement');
+    const incrementButton = document.querySelector('.increment');
+    const resetButton = document.querySelector('.reset');
+    const max = 10;
 
-let counter = 0;
+    decrementButton.addEventListener('click', function() {
+        let count = parseInt(domCounter.textContent);
+        if (count > 0) {
+            domCounter.textContent = count - 1;
+        }
+    });
 
-const counterElem = document.querySelector('.counter');
-const incrementBtn =  document.querySelector('.increment');
-const decrementBtn = document.querySelector('.decrement');
+    incrementButton.addEventListener('click', function() {
+        let count = parseInt(domCounter.textContent);
+        if (count < max) {
+            domCounter.textContent = count + 1;
+        }
+    });
 
-incrementBtn.addEventListener('click', function() {
-    counter++;
-    counterElem.innerText = counter;
-});
-
-decrementBtn.addEventListener('click', function() {
-    counter--;
-    counterElem.innerText = counter;
+    resetButton.addEventListener('click', function() {
+        domCounter.textContent = 0;
+    });
 });
